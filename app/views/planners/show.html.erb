@@ -62,8 +62,6 @@
                         </div>
                     </div>
                   <% end %>
-                  <!-- not exist when coming from past planners -->
-                  <!-- not exist when coming from past planners -->
                   <% unless params[:id].to_i < current_user.planners.last.id %>
                     <div class="card-img-icon-delete">
                       <%= link_to planner_planner_recipe_path(@planner, planner_recipe), method: :delete do  %>
@@ -71,10 +69,8 @@
                       <% end %>
                     </div>
                   <% end %>
-                  <!-- not exist when coming from past planners -->
                 </div>
 
-                <!-- btn -/+ -->
                 <% unless params[:id].to_i < current_user.planners.last.id %>
                   <div class='recipe-servings-planner'>
 
@@ -87,9 +83,7 @@
                     <% end %>
                   </div>
                 <% end %>
-                <!-- btn -/+ -->
               </div>
-              <!-- card design -->
             </div>
           <% end %>
         <% end %>
