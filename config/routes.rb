@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # root to: 'recipes#index'
   resources :supermarckets, only: :index
 
+  resources :testhere, only: :index
+
   root to: 'pages#home'
 
 

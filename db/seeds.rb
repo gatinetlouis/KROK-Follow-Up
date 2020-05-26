@@ -120,6 +120,8 @@ csv_options = { col_sep: ';', quote_char: '"', headers: :first_row }
 CSV.foreach(Rails.root.join('db', 'datas', 'recipes.csv'), csv_options) do |row|
   recipe = Recipe.create!(
       name: row["name"],
+      global_rating: row["global_rating"],
+      number_of_ratings: row["number_of_ratings"],
       steps: row["steps"],
       dish_type: row["meal_type"],
       dish_origin: row["origin"],
