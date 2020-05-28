@@ -1,3 +1,4 @@
+
 const initLikedRecipeNav = () => {
   const btnStarter = document.getElementById('btn-starter');
   const btnMain = document.getElementById('btn-main');
