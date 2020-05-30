@@ -68,6 +68,20 @@ def recommended_recipe(ingredients_for_one_recipe, ingredients_for_all_recipes):
     index = np.argsort(similarity_score)[-2]
     return list_of_ingredients[index], index
 
+def recommended_recipe_second(ingredients_for_one_recipe, ingredients_for_all_recipes):
+
+    afv_list = list()
+    similarity_score = list()
+    afv_recipe = avg_feature_vector(ingredients_for_one_recipe, model=model, num_features=20, index2word_set=index2word_set)
+
+    for i in range(len(ingredients_for_all_recipes)):
+        afv = avg_feature_vector(ingredients_for_all_recipes[i], model=model, num_features=20, index2word_set=index2word_set)
+        afv_list.append(afv)
+        sim = 1 - spatial.distance.cosine(afv_recipe, afv_list[i])
+        similarity_score.append(sim)
+
+    index = np.argsort(similarity_score)[-3]
+    return list_of_ingredients[index], index
 
 def find_index_with_recipe_name(recipe_name):
     true_false = recipes_df_joined[["name"]] == recipe_name
@@ -78,14 +92,18 @@ def recommender(recipe_name):
     index = find_index_with_recipe_name(recipe_name)
     ingredients_recipe = list_of_ingredients[index]
     ingredients_reco, index_new = recommended_recipe(ingredients_recipe, list_of_ingredients)
+    ingredients_reco_second, index_new_second = recommended_recipe_second(ingredients_recipe, list_of_ingredients)
     recipe = recipes_df_joined.iloc[index,3]
     reco = recipes_df_joined.iloc[index_new,3]
-    print("current recipe:", recipe)
-    print("current ingredients:", ingredients_recipe)
-    print("                   ")
-    print("recommended recipe:", reco)
-    print("recommended ingredients:", ingredients_reco)
-    return reco
+    reco_second = recipes_df_joined.iloc[index_new_second,3]
+    both_recos = [reco,reco_second]
+    #print("current recipe:", recipe)
+    #print("current ingredients:", ingredients_recipe)
+    #print("                   ")
+    #print("recommended recipe:", reco)
+    #print("recommended ingredients:", ingredients_reco)
+    return both_recos
 
 print(recommender(current_recipe_name))
+
 

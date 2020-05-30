@@ -41,7 +41,14 @@ class RecipesController < ApplicationController
 
   def show
     @recipe_id = @recipe.id
-    @python_result = `python lib/assets/python/recommender.py "#{@recipe_id}" "#{@recipe.name}"`
+    @array_of_recipes_with_python = `python lib/assets/python/recommender.py "#{@recipe_id}" "#{@recipe.name}"`
+    @array_of_recipes = []
+    first=  @array_of_recipes_with_python[2...-3].split(', ').first[0..-2]
+    second = @array_of_recipes_with_python[2...-3].split(', ').second[1..-1]
+    @array_of_recipes << Recipe.where(name: first)
+    @array_of_recipes << Recipe.where(name: second)
+    # raise
+
   end
 
   def new
