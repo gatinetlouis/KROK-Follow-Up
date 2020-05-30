@@ -40,6 +40,8 @@ class RecipesController < ApplicationController
   end
 
   def show
+    @recipe_id = @recipe.id
+    @python_result = `python lib/assets/python/recommender.py "#{@recipe_id}" "#{@recipe.name}"`
   end
 
   def new
