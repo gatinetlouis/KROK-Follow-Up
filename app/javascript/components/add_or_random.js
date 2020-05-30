@@ -12,9 +12,6 @@ const card_random_to_hide_starter = document.querySelectorAll('.card_random_to_h
 const card_random_to_hide_main = document.querySelectorAll('.card_random_to_hide-1')
 const card_random_to_hide_dessert = document.querySelectorAll('.card_random_to_hide-2')
 
-// console.log(card_random_to_hide_starter[Math.floor(Math.random() * card_random_to_hide_starter.length)]);
-
-
 const remove_d_none_for_random_card = (array) => {
   const card = array[Math.floor(Math.random() * array.length)]
   card.classList.remove("d-none")
@@ -25,7 +22,6 @@ const remove_d_none_for_random_card = (array) => {
    })
   }
 
-
 const put_d_none_for_active_card = (array) => {
   array.forEach(element => {
     if (element.classList.contains("active_random")) {
@@ -34,8 +30,6 @@ const put_d_none_for_active_card = (array) => {
     }
   })
 }
-
-
 
 if (
   cards_to_display.length !==0 &&
@@ -70,7 +64,5 @@ if (
     });
   };
 };
-
-
 
 export { display_add_or_random }
