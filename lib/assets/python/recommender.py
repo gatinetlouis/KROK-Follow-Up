@@ -23,7 +23,7 @@ nb_of_recipes = recipes_df_joined.shape[0]
 list_of_ingredients = list()
 for i in range(nb_of_recipes):
     list_of_ingredients.append(list(set(recipes_df_joined.iloc[i,-3]))) #to add unique list of ingredients
-model = Word2Vec.load("app/word2vec.model")
+model = Word2Vec.load("app/word2vec2.model")
 
 #We don't redo the following code as we already loaded our trained model
 # model = Word2Vec(min_count=0,
