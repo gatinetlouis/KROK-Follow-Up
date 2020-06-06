@@ -120,19 +120,15 @@
           <% unless recipe.nil? %>
             <% unless recipe.is_rejected?(current_user) %>
                 <div class="col-6 column-home">
-                  <!-- card design -->
                   <div class="card card-home shadow-sm">
                     <div class="card-img-top d-flex justify-content-center">
                       <%= link_to recipe_path(recipe) do  %>
                         <%= cl_image_tag recipe.photo.key %>
                       <% end %>
                       <div class="card-img-icons">
-                        <%#= render 'shared/btn_addrecipe_home', recipe: recipe %>
-                        <%#= render 'shared/btn_heart', recipe: recipe %>
                       </div>
                     </div>
                   </div>
-                  <!-- card design -->
               </div>
             <% end %>
             <% end %>
