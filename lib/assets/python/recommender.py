@@ -97,7 +97,7 @@ def recommender(recipe_name):
     recipe = recipes_df_joined.iloc[index,3]
     reco = recipes_df_joined.iloc[index_new,3]
     reco_second = recipes_df_joined.iloc[index_new_second,3]
-    both_recos = [reco,reco_second]
+    both_recos = ";".join([reco,reco_second,"end"])
     # print("current recipe", recipe, ingredients_recipe)
     # print("                   ")
     # print("recommended recipe 1:", reco, ingredients_reco)
